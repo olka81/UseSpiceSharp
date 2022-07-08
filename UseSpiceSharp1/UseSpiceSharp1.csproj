@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Framework.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="SpiceSharp" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.XtraEditors.v21.2">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.design\21.2.4\lib\net5.0-windows\DevExpress.XtraEditors.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="SpiceSharp">
+      <HintPath>..\..\SpiceSharp\SpiceSharp\bin\Debug\netstandard2.0\SpiceSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SpiceSharpBSIM">
+      <HintPath>..\..\..\..\source\repos\SpiceSharpBSIM\SpiceSharpBSIM\bin\Debug\netstandard2.0\SpiceSharpBSIM.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
