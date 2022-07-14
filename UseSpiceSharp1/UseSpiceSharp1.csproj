@@ -24,8 +24,7 @@
       <Private>true</Private>
     </Reference>
     <Reference Include="SpiceSharpBSIM">
-      <HintPath>..\..\..\..\source\repos\SpiceSharpBSIM\SpiceSharpBSIM\bin\Debug\netstandard2.0\SpiceSharpBSIM.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\SpiceSharpBSIM.dll</HintPath>
     </Reference>
   </ItemGroup>
 
