@@ -21,9 +21,11 @@
     </Reference>
     <Reference Include="SpiceSharp">
       <HintPath>..\..\SpiceSharp\SpiceSharp\bin\Debug\netstandard2.0\SpiceSharp.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="SpiceSharpBSIM">
       <HintPath>..\..\..\..\source\repos\SpiceSharpBSIM\SpiceSharpBSIM\bin\Debug\netstandard2.0\SpiceSharpBSIM.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 
