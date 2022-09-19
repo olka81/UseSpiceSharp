@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "SpiceSharpBSIM": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\bratseva\\source\\repos\\UseSpiceSharpGit\\UseSpiceSharp1\\bin\\Debug\\netcoreapp3.1\\UseSpiceSharp1.exe",
+      "nativeDebugging": true
+    }
+  }
+}
