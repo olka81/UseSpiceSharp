@@ -111,7 +111,7 @@ namespace UseSpiceSharp1
 			//var M1 = new Mosfet1("M1", "out", "in", "0", "0", "NMOS_DEFAULT_MODEL");
 			//var b1 = CreateBSIM1("B1", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM1_DEFAULT_MODEL");
 			//var b3 = CreateBSIM3("B3", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM3_DEFAULT_MODEL");
-			var b3 = CreateBSIM3("B3", "3", "1", "4", "0", 0.35e-6, 10e-6, "BSIM3_DEFAULT_MODEL");
+			var b3 = CreateBSIM3("B3", "3", "1", "4", "0", 10e-6, 0.35e-6,  "BSIM3_DEFAULT_MODEL");
 
 			//ckt.Add(V2);
 			//ckt.Add(R1);
@@ -130,8 +130,8 @@ namespace UseSpiceSharp1
 			ckt.Add(bsim3_model);
 			//ckt.Add(b1);
 			ckt.Add(b3);
-			ckt["B3"].SetParameter("l", 3.5e-7);
-			ckt["B3"].SetParameter("w", 1e-6);
+			//ckt["B3"].SetParameter("l", 3.5e-7);
+			//ckt["B3"].SetParameter("w", 1e-6);
 			//ckt.Add(M1);
 
 			textBox1.Text = "";
