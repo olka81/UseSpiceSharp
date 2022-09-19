@@ -92,57 +92,92 @@ namespace UseSpiceSharp1
 			//var R2 = new Resistor("R2", "6", "5", 100.0);
 			//var L1 = new Inductor("L1", "3", "2", 1.0e-9);
 
-			var V1 = new VoltageSource("V1", "vdd", "0", 3.3);
-			var V2 = new VoltageSource("V2", "in", "0", new Pulse(0, 3.3, 1e-6, 1e-9, 0.5e-6, 2e-6, 6e-6));
-            var R1 = new Resistor("R1", "vdd", "out", 10.0e3);
-            var C1 = new Capacitor("C1", "out", "0", 1e-7);
+			//var V1 = new VoltageSource("V1", "vdd", "0", 3.3);
+			//var V2 = new VoltageSource("V2", "in", "0", new Pulse(0, 3.3, 1e-6, 1e-9, 0.5e-6, 2e-6, 6e-6));
+			//         var R1 = new Resistor("R1", "vdd", "out", 10.0e3);
+			//         var C1 = new Capacitor("C1", "out", "0", 1e-7);
+
+			var vgs = new VoltageSource("vgs", "1", "0", 3.5);
+			var vdd = new VoltageSource("vdd", "2", "0", 3.5);
+			var vss = new VoltageSource("vss", "4", "0", 0);
+			var i1 = new CurrentSource("i1", "2", "3", 0.001);
+
 
 			var mos_model = new Mosfet1Model("NMOS_DEFAULT_MODEL");
-			var bsim1_model = CreateBSIM1Model("BSIM1_DEFAULT_MODEL", "temp=25 muz=600 vdd=5 vfb=-0.3 phi=0.6 k1=0.5 u0=670 x2e=-0.07 mus=1082 n0=0.5 tox=1e-7 mj=0.5 mjsw=0.33 pb=0.8 pbsw=1.0 xpart=1.0"); //new BSIM1Model("BSIM_DEFAULT_MODEL");
-			var bsim3_model = CreateBSIM3Model("BSIM3_DEFAULT_MODEL", "tnom=27.0 nch=1.024685e+17 tox=1.00000e-08 xj=1.00000e-07 lint=3.75860e-08 wint=-2.02101528644562e-07 vth0=0.6094574 k1=0.5341038 k2=1.703463e-03 k3=-17.24589 dvt0=0.1767506 dvt1=0.5109418 dvt2=-0.05 nlx=9.979638e-08 w0=1e-6 k3b=4.139039 vsat=97662.05 ua=-1.748481e-09 ub=3.178541e-18 uc=1.3623e-10 rdsw=298.873 u0=307.2991 prwb=-2.24e-4 a0=0.4976366 keta=-2.195445e-02 a1=0.0332883 a2=0.9 voff=-9.623903e-02 nfactor=0.8408191 cit=3.994609e-04 cdsc=1.130797e-04 cdscb=2.4e-5 eta0=0.0145072 etab=-3.870303e-03 dsub=0.4116711 pclm=1.813153 pdiblc1=2.003703e-02 pdiblc2=0.00129051 pdiblcb=-1.034e-3 drout=0.4380235 pscbe1=5.752058e+08 pscbe2=7.510319e-05 pvag=0.6370527 prt=68.7 ngate=1.e20 alpha0=1.e-7 beta0=28.4 prwg=-0.001 ags=1.2 dvt0w=0.58 dvt1w=5.3e6 dvt2w=-0.0032 kt1=-.3 kt2=-.03 at=33000 ute=-1.5 ua1=4.31e-09 ub1=7.61e-18 uc1=-2.378e-10 kt1l=1e-8 wr=1 b0=1e-7 b1=1e-7 dwg=5e-8 dwb=2e-8 delta=0.015 cgdl=1e-10 cgsl=1e-10 cgbo=1e-10 xpart=0.0 cgdo=0.4e-9 cgso=0.4e-9 clc=0.1e-6 cle=0.6 ckappa=0.6"); //new BSIM1Model("BSIM_DEFAULT_MODEL");
+			//var bsim1_model = CreateBSIM1Model("BSIM1_DEFAULT_MODEL", "temp=25 muz=600 vdd=5 vfb=-0.3 phi=0.6 k1=0.5 u0=670 x2e=-0.07 mus=1082 n0=0.5 tox=1e-7 mj=0.5 mjsw=0.33 pb=0.8 pbsw=1.0 xpart=1.0"); //new BSIM1Model("BSIM_DEFAULT_MODEL");
+			var bsim3_model = CreateBSIM3Model("BSIM3_DEFAULT_MODEL", "tnom=27.0 elm=3 nch=2.498E+17  tox=9E-09 xj=1.00000E-07 Lint = 9.36e-8 Wint = 1.47e-7 Lintnoi = 1e-9 Vth0 = .6322    K1 = .756  K2 = -3.83e-2  K3 = -2.612  Dvt0 = 2.812  Dvt1 = 0.462  Dvt2 = -9.17e-2  Nlx = 3.52291E-08  W0 = 1.163e-6  K3b = 2.233  Vsat = 86301.58  Ua = 6.47e-9  Ub = 4.23e-18  Uc = -4.706281E-11  Rdsw = 650  U0 = 388.3203 wr = 1  A0 = .3496967 Ags = .1    B0 = 0.546    B1 = 1  Dwg = -6.0E-09 Dwb = -3.56E-09 Prwb = -.213  Keta = -3.605872E-02  A1 = 2.778747E-02  A2 = .9  Voff = -6.735529E-02  NFactor = 1.139926  Cit = 1.622527E-04  Cdsc = -2.147181E-05  Cdscb = 0  Dvt0w = 0 Dvt1w = 0 Dvt2w = 0  Cdscd = 0 Prwg = 0  Eta0 = 1.0281729E-02  Etab = -5.042203E-03  Dsub = .31871233  Pclm = 1.114846  Pdiblc1 = 2.45357E-03  Pdiblc2 = 6.406289E-03  Drout = .31871233  Pscbe1 = 5000000  Pscbe2 = 5E-09 Pdiblcb = -.234  Pvag = 0 delta = 0.01  Wl = 0 Ww = -1.420242E-09 Wwl = 0  Wln = 0 Wwn = .2613948 Ll = 1.300902E-10  Lw = 0 Lwl = 0 Lln = .316394  Lwn = 0  kt1 = -.3  kt2 = -.051  At = 22400  Ute = -1.48  Ua1 = 3.31E-10  Ub1 = 2.61E-19 Uc1 = -3.42e-10  Kt1l = 0  Prt = 764.3"); //new BSIM1Model("BSIM_DEFAULT_MODEL");
 																																																			 //var M1 = new Mosfet1("M1", "3", "5", "0", "0", "NMOS_DEFAULT_MODEL");
-			var M1 = new Mosfet1("M1", "out", "in", "0", "0", "NMOS_DEFAULT_MODEL");
-			var b1 = CreateBSIM1("B1", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM1_DEFAULT_MODEL");
-			var b3 = CreateBSIM3("B3", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM3_DEFAULT_MODEL");
+// capmod = 3
+			//var M1 = new Mosfet1("M1", "out", "in", "0", "0", "NMOS_DEFAULT_MODEL");
+			//var b1 = CreateBSIM1("B1", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM1_DEFAULT_MODEL");
+			//var b3 = CreateBSIM3("B3", "out", "in", "0", "0", 100e-6, 100e-6, "BSIM3_DEFAULT_MODEL");
+			var b3 = CreateBSIM3("B3", "3", "1", "4", "0", 0.35e-6, 10e-6, "BSIM3_DEFAULT_MODEL");
 
 			//ckt.Add(V2);
 			//ckt.Add(R1);
 			//ckt.Add(R2);
 			//ckt.Add(L1);
-			ckt.Add(mos_model);
-			ckt.Add(V1);
-			ckt.Add(V2);
-			ckt.Add(R1);
-			ckt.Add(C1);
+			//ckt.Add(mos_model);
+			//ckt.Add(V1);
+			//ckt.Add(V2);
+			//ckt.Add(R1);
+			//ckt.Add(C1);
 			//ckt.Add(bsim1_model);
+			ckt.Add(vgs);
+			ckt.Add(vdd);
+			ckt.Add(vss);
+			ckt.Add(i1);
 			ckt.Add(bsim3_model);
 			//ckt.Add(b1);
 			ckt.Add(b3);
-			ckt["B3"].SetParameter("m", 4.0);
+			ckt["B3"].SetParameter("l", 3.5e-7);
+			ckt["B3"].SetParameter("w", 1e-6);
 			//ckt.Add(M1);
 
 			textBox1.Text = "";
 			// Create the simulation
-			var tran = new Transient("Tran 1", 1e-9, 9e-6);
-			// Make the exports
-			//var inputExport = new RealVoltageExport(tran, "3");
+			//var tran = new Transient("Tran 1", 1e-9, 9e-6);
+			//// Make the exports
+			////var inputExport = new RealVoltageExport(tran, "3");
 
-			var outputExport = new RealVoltageExport(tran, "out");
+			//var outputExport = new RealVoltageExport(tran, "out");
 
-			// Simulate
-			tran.ExportSimulationData += (sender1, args) =>
+			//// Simulate
+			//tran.ExportSimulationData += (sender1, args) =>
+			//{
+
+			//	//var input = inputExport.Value;
+			//	var output = outputExport.Value;
+			//	textBox1.Text += args.Time.ToString();
+			//	textBox1.Text += " ";
+			//	textBox1.Text += output.ToString();
+			//	//textBox1.Text += " ";
+			//	//textBox1.Text += input.ToString();
+			//	textBox1.Text += "\r\n";
+			//};
+			//tran.Run(ckt);
+
+			var dc = new DC("dc", new[]
 			{
+				new SweepConfiguration("vgs", 1, 3.5, 0.5)
+			});
 
-				//var input = inputExport.Value;
-				var output = outputExport.Value;
-				textBox1.Text += args.Time.ToString();
-				textBox1.Text += " ";
-				textBox1.Text += output.ToString();
-				//textBox1.Text += " ";
-				//textBox1.Text += input.ToString();
-				textBox1.Text += "\r\n";
-			};
-			tran.Run(ckt);
+			//Export<double>[] exports = { new RealPropertyExport(dc, "V(1)", "I(vgs)") };
+			//dc.ExportSimulationData += (sender1, args) =>
+			//{
+
+			//	//var input = inputExport.Value;
+			//	var output = exports;
+			//	//textBox1.Text += args.Time.ToString();
+			//	//textBox1.Text += " ";
+			//	textBox1.Text += output.ToString();
+			//	//textBox1.Text += " ";
+			//	//textBox1.Text += input.ToString();
+			//	textBox1.Text += "\r\n";
+			//};
+			dc.Run(ckt);
+			
+
 		}
 	}
 }
