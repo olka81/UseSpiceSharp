@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseSpiceSharp1", "UseSpiceSharp1\UseSpiceSharp1.csproj", "{77CB9C89-D125-40DB-A6B4-E707F4D4BE6B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiceSharpBSIM", "..\SpiceSharpBSIM\SpiceSharpBSIM\SpiceSharpBSIM.csproj", "{B34200C8-89A3-4781-A1B5-88FD49A63457}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{77CB9C89-D125-40DB-A6B4-E707F4D4BE6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77CB9C89-D125-40DB-A6B4-E707F4D4BE6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77CB9C89-D125-40DB-A6B4-E707F4D4BE6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34200C8-89A3-4781-A1B5-88FD49A63457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34200C8-89A3-4781-A1B5-88FD49A63457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34200C8-89A3-4781-A1B5-88FD49A63457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34200C8-89A3-4781-A1B5-88FD49A63457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
