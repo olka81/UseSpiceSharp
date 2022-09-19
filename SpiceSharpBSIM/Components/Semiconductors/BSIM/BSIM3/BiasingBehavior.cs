@@ -1,4 +1,5 @@
 using System;
+using System;
 using SpiceSharp.Simulations;
 using SpiceSharp.Behaviors;
 using SpiceSharp.Algebra;
