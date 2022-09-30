@@ -40,15 +40,15 @@ namespace UseSpiceSharp1
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(800, 421);
+			this.textBox1.Size = new System.Drawing.Size(800, 402);
 			this.textBox1.TabIndex = 0;
 			// 
 			// button1
 			// 
 			this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.button1.Location = new System.Drawing.Point(0, 421);
+			this.button1.Location = new System.Drawing.Point(0, 402);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(800, 29);
+			this.button1.Size = new System.Drawing.Size(800, 48);
 			this.button1.TabIndex = 1;
 			this.button1.Text = "button1";
 			this.button1.UseVisualStyleBackColor = true;

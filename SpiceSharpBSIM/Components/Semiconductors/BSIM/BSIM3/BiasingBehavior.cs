@@ -1,5 +1,5 @@
 using System;
-using System;
+using System.IO;
 using SpiceSharp.Simulations;
 using SpiceSharp.Behaviors;
 using SpiceSharp.Algebra;
@@ -3081,6 +3081,14 @@ namespace SpiceSharp.Components.BSIM3Behaviors
             SourceNodePrimePtr.Value += m * (cdreq + ceqbs + ceqqg + ceqqb + ceqqd);
             if (BaseParameters.NqsMod > 0)
                 QNodePtr.Value += m * (cqcheq - cqdef);
+
+            //StreamWriter f = new StreamWriter("d:/test.txt", true);
+            //f.WriteLine(GateNodePtr.Value);
+            //f.WriteLine(BulkNodePtr.Value);
+            //f.WriteLine(DrainNodePrimePtr.Value);
+            //f.WriteLine(SourceNodePrimePtr.Value);
+            //f.WriteLine("");
+            //f.Close();
 
             /*
              *  load y matrix
