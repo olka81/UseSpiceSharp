@@ -3082,18 +3082,18 @@ namespace SpiceSharp.Components.BSIM3Behaviors
             if (BaseParameters.NqsMod > 0)
                 QNodePtr.Value += m * (cqcheq - cqdef);
 
-            //StreamWriter f = new StreamWriter("d:/test.txt", true);
-            //f.WriteLine(GateNodePtr.Value);
-            //f.WriteLine(BulkNodePtr.Value);
-            //f.WriteLine(DrainNodePrimePtr.Value);
-            //f.WriteLine(SourceNodePrimePtr.Value);
-            //f.WriteLine("");
-            //f.Close();
+			//StreamWriter f = new StreamWriter("d:/test.txt", true);
+			//f.WriteLine(GateNodePtr.Value);
+			//f.WriteLine(BulkNodePtr.Value);
+			//f.WriteLine(DrainNodePrimePtr.Value);
+			//f.WriteLine(SourceNodePrimePtr.Value);
+			//f.WriteLine("");
+			//f.Close();
 
-            /*
+			/*
              *  load y matrix
              */
-            T1 = m * (qdef * this.Gtau);
+			T1 = m * (qdef * this.Gtau);
             DdPtr.Value += m * (base.DrainConductance);
             GgPtr.Value += m * (gcggb - ggtg);
             SsPtr.Value += m * (base.SourceConductance);
