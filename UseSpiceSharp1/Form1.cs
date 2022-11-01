@@ -233,7 +233,7 @@ namespace UseSpiceSharp1
 			//M8 Lnot 0 Vdd Vdd P1 W = 1.8u L = 3.6u
 			var m8 = CreateBSIM3("m8", "Lnot", "0", "Vdd", "Vdd", 1.8e-6, 3.6e-6, "BSIM3_DEFAULT_MODEL_1");
 			//M9 Lnot Bnot 2 0 N1 W = 1.8u L = 1.2u
-			var m9 = CreateBSIM3("m9", "Lnot", "0", "2", "0", 1.8e-6, 1.2e-6, "BSIM3_DEFAULT_MODEL");
+			var m9 = CreateBSIM3("m9", "Lnot", "Bnot", "2", "0", 1.8e-6, 1.2e-6, "BSIM3_DEFAULT_MODEL");
 			//M10 2 A 0 0 N1 W = 1.8u L = 1.2u
 			var m10 = CreateBSIM3("m10", "2", "A", "0", "0", 1.8e-6, 1.2e-6, "BSIM3_DEFAULT_MODEL");
 			//M11 Qnot 0 Vdd Vdd P1 W = 3.6u L = 3.6u
