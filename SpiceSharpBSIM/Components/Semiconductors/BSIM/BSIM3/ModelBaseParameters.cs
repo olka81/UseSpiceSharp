@@ -104,7 +104,7 @@ namespace SpiceSharp.Components.BSIM3Behaviors
         [ParameterName("dvt2"), ParameterInfo("Short channel effect coeff. 2")]
         public GivenParameter<double> Dvt2 { get; } = new GivenParameter<double>(-0.032);
         [ParameterName("dvt0w"), ParameterInfo("Narrow Width coeff. 0")]
-        public GivenParameter<double> Dvt0w { get; } = new GivenParameter<double>();
+        public GivenParameter<double> Dvt0w { get; } = new GivenParameter<double>(5.3e3);
         [ParameterName("dvt1w"), ParameterInfo("Narrow Width effect coeff. 1")]
         public GivenParameter<double> Dvt1w { get; } = new GivenParameter<double>(5300000);
         [ParameterName("dvt2w"), ParameterInfo("Narrow Width effect coeff. 2")]
@@ -114,7 +114,7 @@ namespace SpiceSharp.Components.BSIM3Behaviors
         [ParameterName("dsub"), ParameterInfo("DIBL coefficient in the subthreshold region")]
         public GivenParameter<double> Dsub { get; } = new GivenParameter<double>();
         [ParameterName("vth0"), ParameterName("vtho"), ParameterInfo("Threshold voltage")]
-        public GivenParameter<double> Vth0 { get; } = new GivenParameter<double>();
+        public GivenParameter<double> Vth0 { get; } = new GivenParameter<double>(0.7);
         [ParameterName("ua"), ParameterInfo("Linear gate dependence of mobility")]
         public GivenParameter<double> Ua { get; } = new GivenParameter<double>(2.25e-09);
         [ParameterName("ua1"), ParameterInfo("Temperature coefficient of ua")]

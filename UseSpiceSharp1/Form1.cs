@@ -83,7 +83,7 @@ namespace UseSpiceSharp1
 		{
 			//Test1();
 			//Test2();
-			Test3();
+			Test4();
 		}
 
 		private void Test2()
@@ -314,6 +314,73 @@ namespace UseSpiceSharp1
 			};
 			tran.Run(ckt);
 
+		}
+
+		private void Test4()
+		{
+			// Build the circuit
+			var ckt = new Circuit(
+			);
+
+			var v1 = new VoltageSource("v1", "3", "0", 5);
+			var r1 = new Resistor("r1", "2", "3", 1e3);
+			var vpulse = new VoltageSource("vpulse", "1", "0", new Pulse(0, 9, 0, 5e-9, 1e-9, 4e-9, 2e-8));
+
+			//var bsim3_model = CreateBSIM3Model("BSIM3_MODEL", "tnom=27.0 elm=3 nch=2.498E+17  tox=9E-09 xj=1.00000E-07 Lint = 9.36e-8 Wint = 1.47e-7 Lintnoi = 1e-9 Vth0 = .6322    K1 = .756  K2 = -3.83e-2  K3 = -2.612  Dvt0 = 2.812  Dvt1 = 0.462  Dvt2 = -9.17e-2  Nlx = 3.52291E-08  W0 = 1.163e-6  K3b = 2.233  Vsat = 86301.58  Ua = 6.47e-9  Ub = 4.23e-18  Uc = -4.706281E-11  Rdsw = 650  U0 = 388.3203 wr = 1  A0 = .3496967 Ags = .1    B0 = 0.546    B1 = 1  Dwg = -6.0E-09 Dwb = -3.56E-09 Prwb = -.213  Keta = -3.605872E-02  A1 = 2.778747E-02  A2 = .9  Voff = -6.735529E-02  NFactor = 1.139926  Cit = 1.622527E-04  Cdsc = -2.147181E-05  Cdscb = 0  Dvt0w = 0 Dvt1w = 0 Dvt2w = 0  Cdscd = 0 Prwg = 0  Eta0 = 1.0281729E-02  Etab = -5.042203E-03  Dsub = .31871233  Pclm = 1.114846  Pdiblc1 = 2.45357E-03  Pdiblc2 = 6.406289E-03  Drout = .31871233  Pscbe1 = 5000000  Pscbe2 = 5E-09 Pdiblcb = -.234  Pvag = 0 delta = 0.01  Wl = 0 Ww = -1.420242E-09 Wwl = 0  Wln = 0 Wwn = .2613948 Ll = 1.300902E-10  Lw = 0 Lwl = 0 Lln = .316394  Lwn = 0  kt1 = -.3  kt2 = -.051  At = 22400  Ute = -1.48  Ua1 = 3.31E-10  Ub1 = 2.61E-19 Uc1 = -3.42e-10  Kt1l = 0  Prt = 764.3"); //new BSIM1Model("BSIM_DEFAULT_MODEL");
+
+			var bsim3_def = CreateBSIM3Model("BSIM3_DEFAULT_MODEL", ""); //new BSIM1Model("BSIM_DEFAULT_MODEL");
+																																																																																																																																																																																																																																																																																																			//var M1 = new Mosfet1("M1", "3", "5", "0", "0", "NMOS_DEFAULT_MODEL");
+			var m1 = CreateBSIM3("m1", "2", "1", "0", "0", 5e-6, 5e-6, "BSIM3_DEFAULT_MODEL");
+
+			ckt.Add(v1);
+			ckt.Add(r1);
+			ckt.Add(vpulse);
+			ckt.Add(bsim3_def);
+
+			ckt.Add(m1);
+
+			textBox1.Text = "";
+			// Create the simulation
+			var tran = new Transient("Tran 1", 0.1e-9, 20e-9);
+			//// Make the exports
+			////var inputExport = new RealVoltageExport(tran, "3");
+
+			var outv2 = new RealVoltageExport(tran, "2");
+			var outv1 = new RealVoltageExport(tran, "1");
+
+			//// Simulate
+			tran.ExportSimulationData += (sender1, args) =>
+			{
+
+				//var input = inputExport.Value;
+				var output = outv2.Value - outv1.Value;
+				textBox1.Text += args.Time.ToString();
+				textBox1.Text += " ";
+				textBox1.Text += output.ToString();
+				//textBox1.Text += " ";
+				//textBox1.Text += input.ToString();
+				textBox1.Text += "\r\n";
+			};
+			tran.Run(ckt);
+
+			// Create simulations
+			//var dc = new DC("dc", new[]
+			//{
+			//	new SweepConfiguration("vgs", 1, 3.5, 0.5)
+			//});
+
+			//// Create exports
+			//var outputExport = new RealVoltageExport(dc, "3");
+			//dc.ExportSimulationData += (sender, args) =>
+			//{
+			//	var v1 = outputExport.Value;
+			//	textBox1.Text += args.SweepValue.ToString();
+			//	textBox1.Text += " ";
+			//	textBox1.Text += v1.ToString();
+			//	textBox1.Text += "\r\n";
+
+			//};
+			//dc.Run(ckt);
 		}
 	}
 }
